@@ -9,7 +9,12 @@
 > db.createCollection('sports')
 
 // Insert data into created collection 'sports'
-db.sports.insertMany([{category: 'Ball sport', createdAt: '1900-01-01', league: 'Rolland Garros'}, {category: 'Ice sport', createdAt: '1900-01-01', league: 'NHL'}, {category: 'Extreme sport', createdAt: '1900-01-01', league: 'XGames'}, {category: 'Extreme sport', createdAt: '1900-01-01', league: 'NFL'}])
+db.sports.insertMany([
+    {category: 'Ball sport', createdAt: '1900-01-01', league: 'Rolland Garros'}, 
+    {category: 'Ice sport', createdAt: '1900-01-01', league: 'NHL'}, 
+    {category: 'Extreme sport', createdAt: '1900-01-01', league: 'XGames'}, 
+    {category: 'Extreme sport', createdAt: '1900-01-01', league: 'NFL'}
+])
 
 // Add with upsert two new fields
 db.sports.updateMany({}, {$set: {title: '', required_teams: true}}, {$upsert: true})
@@ -20,7 +25,8 @@ db.sports.updateOne({$and:[{category: 'Ice sport', league: 'NHL'}]}, {$set: {tit
 db.sports.updateOne({$and:[{category: 'Extreme sport', league: 'XGames'}]}, {$set: {title: 'Ski', required_teams: false}})
 db.sports.updateOne({$and:[{category: 'Extreme sport', league: 'NFL'}]}, {$set: {title: 'Football'}})
 
-db.sports.updateMany({required_teams: true}, {$set: {all_teams: []}})
+db.sports.updateMany({required_teams: true}, {$set: {number_of_teams: 0}})
+db.sports.updateMany({required_teams: true}, {$inc: {number_of_teams: 10}})
 
 ```
 
