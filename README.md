@@ -31,7 +31,6 @@ db.sports.updateMany({required_teams: true}, {$inc: {number_of_teams: 10}})
 db.sports.updateMany({required_teams: true}, {$push: {all_teams: {$each: [{name: "team1", number_of_players: 3},{name: "team2", number_of_players: 3}]}}})
 
 
-
 ```
 
 
