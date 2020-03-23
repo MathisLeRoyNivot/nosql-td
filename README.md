@@ -28,6 +28,10 @@ db.sports.updateOne({$and:[{category: 'Extreme sport', league: 'NFL'}]}, {$set: 
 db.sports.updateMany({required_teams: true}, {$set: {number_of_teams: 0}})
 db.sports.updateMany({required_teams: true}, {$inc: {number_of_teams: 10}})
 
+db.sports.updateMany({required_teams: true}, {$push: {all_teams: {$each: [{name: "team1", number_of_players: 3},{name: "team2", number_of_players: 3}]}}})
+
+
+
 ```
 
 
