@@ -16,9 +16,12 @@ db.sports.updateMany({}, {$set: {title: '', required_teams: true}}, {$upsert: tr
 
 // Update
 db.sports.updateOne({$and:[{category: 'Ball sport', league: 'Rolland Garros'}]}, {$set: {title: 'Tennis', required_teams: false}})
-db.sports.updateOne({$and:[{category: 'Ice sport', league: 'NHL'}]}, {$set: {title: 'Ice Hockey'})
-db.sports.updateOne({$and:[{category: 'Extreme sport', league: 'XGames'}]}, {$set: {title: 'XGames', required_teams: false}})
-db.sports.updateOne({$and:[{category: 'Extreme sport', league: 'NFL'}]}, {$set: {title: 'Football'})
+db.sports.updateOne({$and:[{category: 'Ice sport', league: 'NHL'}]}, {$set: {title: 'Ice Hockey'}})
+db.sports.updateOne({$and:[{category: 'Extreme sport', league: 'XGames'}]}, {$set: {title: 'Ski', required_teams: false}})
+db.sports.updateOne({$and:[{category: 'Extreme sport', league: 'NFL'}]}, {$set: {title: 'Football'}})
+
+db.sports.updateMany({required_teams: true}, {$set: {all_teams: []}})
+
 ```
 
 
